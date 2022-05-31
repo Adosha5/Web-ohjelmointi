@@ -29,7 +29,7 @@
 
             } else {
 
-                // tarkastetaan, että nimen ja osoitteen pituus on vähintään 5 merkkiä. mikäli ei ole, muutetaan kentän taustaväri mustaksi
+                // tarkastetaan, että nimen ja osoitteen pituus on vähintään 5 merkkiä. mikäli ei ole, muutetaan kentän taustaväri punaiseksi
                 if (nimiteksti.length >= 5) {
 
                     if (osoiteteksti.length >= 5) {
@@ -40,7 +40,7 @@
                     } else {
 
                         document.getElementById("error").innerText = "Osoite väärin";
-                        document.getElementById('osoite').style.backgroundColor = "rgb(0, 0, 0)";
+                        document.getElementById('osoite').style.backgroundColor = "rgb(255, 0, 0)";
                     }
 
                 } else {
