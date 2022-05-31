@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Teht 29a-30a</title>
+
+    <script>
+
+        function avaaosoite() {
+            osoite.style.visibility = '';
+            kartta.style.visibility = "hidden";
+            kuva1.style.visibility = "hidden";
+            kuva2.style.visibility = "hidden";
+        }
+
+        function avaakartta() {
+            osoite.style.visibility = "hidden";
+            kartta.style.visibility = '';
+            kuva1.style.visibility = "hidden";
+            kuva2.style.visibility = "hidden";
+        }
+
+        function avaakuvat() {
+            osoite.style.visibility = "hidden";
+            kartta.style.visibility = "hidden";
+            kuva1.style.visibility = '';
+            kuva2.style.visibility = '';
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <table>
+        <tr>
+            <td>
+                <div id="vasen">
+                    <a href="#" id="link1" onclick="avaaosoite();">Yhteystiedot</a><br>
+                    <a href="#" id="link2" onclick="avaakartta();">Kartta</a><br>
+                    <a href="#" id="link3" onclick="avaakuvat();">Valokuvat</a>
+                </div>
+            </td>
+            <td>
+                <div id="oikea">
+                    <p id="osoite" style="visibility: hidden;">Savonia AMK Microkatu 1</p>
+                    <p id="kartta" style="visibility: hidden;">Savonian campusalueen kartta</p>
+                    <img src="koira1a.jpg" onmouseover="src='koira1b.jpg'" onmouseout="src='koira1a.jpg'" id="kuva1" height="50px" style="visibility: hidden;">
+                    <img src="koira2a.jpg" onmouseover="src='koira2b.jpg'" onmouseout="src='koira2a.jpg'" id="kuva2" height="50px" style="visibility: hidden;">
+                </div>
+            </td>
+        </tr>
+
+    </table>
+
+</body>
+
+</html>

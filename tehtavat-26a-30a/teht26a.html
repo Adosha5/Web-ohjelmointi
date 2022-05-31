@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Teht 26a-28a</title>
+
+    <script>
+
+        function teht26a() {
+
+            // määritetään nimi- ja osoite-tekstikenttien taustaväri
+            document.getElementById('nimi').style.backgroundColor = "rgb(255, 255, 255)";
+            document.getElementById('osoite').style.backgroundColor = "rgb(255, 255, 255)";
+
+            // otetaan käyttäjän syöttämistä nimestä ja osoitteesta välilyönnit pois merkkijonon alusta ja lopusta
+            let nimiteksti = document.getElementById("nimi").value;
+            nimiteksti = nimiteksti.trim();
+
+            let osoiteteksti = document.getElementById("osoite").value;
+            osoiteteksti = osoiteteksti.trim();
+
+            // tarkastetaan, että nimi ja osoite on annettu. jos ei ole, muutetaan kenttien taustaväri mustaksi
+            if (nimiteksti.length == 0 && osoiteteksti.length == 0) {
+
+                document.getElementById("error").innerText = "Nimi ja osoite väärin";
+
+                document.getElementById('nimi').style.backgroundColor = "rgb(0, 0, 0)";
+                document.getElementById('osoite').style.backgroundColor = "rgb(0, 0, 0)";
+
+            } else {
+
+                // tarkastetaan, että nimen ja osoitteen pituus on vähintään 5 merkkiä. mikäli ei ole, muutetaan kentän taustaväri mustaksi
+                if (nimiteksti.length >= 5) {
+
+                    if (osoiteteksti.length >= 5) {
+
+                        document.getElementById("data").innerText = nimiteksti + "," + osoiteteksti;
+                        document.getElementById("error").innerText = "";
+
+                    } else {
+
+                        document.getElementById("error").innerText = "Osoite väärin";
+                        document.getElementById('osoite').style.backgroundColor = "rgb(0, 0, 0)";
+                    }
+
+                } else {
+
+                    document.getElementById("error").innerText = "Nimi väärin";
+                    document.getElementById('nimi').style.backgroundColor = "rgb(0, 0, 0)";
+                }
+            }
+        }
+
+        function teht27a() {
+
+            // tarkastetaan, että ammatti on valittu
+            if (document.getElementById("ammatti").value == "tyhja") {
+
+                // ammattia ei valittu, näytetään virheilmoitus
+                document.getElementById("error_ammatti").innerText = "Valitse ammatti";
+
+            } else {
+
+                // tulostetaan valittu ammatti p-elementtiin
+                let valittuammatti = document.getElementById("ammatti");
+                let arvo = valittuammatti.options[valittuammatti.selectedIndex].text;
+
+                document.getElementById("tyo").innerText = arvo;
+
+                document.getElementById("error_ammatti").innerText = "";
+
+                // tarkastetaan, onko checkboxeja valittu
+                if (document.querySelector('#erityisruokavalio:checked') !== null || document.querySelector('#tarvitsee_majoituksen:checked') !== null
+                    || document.querySelector('#opiskelija:checked') !== null) {
+
+                    // tulostetaan valitut boksit ensin taulukkoon ja sitten p-elementtiin    
+                    let valitutboksit = [];
+
+                    for (let i = 0; i < document.getElementsByName("valitut").length; i++) {
+                        if (document.getElementsByName("valitut")[i].checked) {
+                            valitutboksit.push(document.getElementsByName("valitut")[i].value);
+                        }
+                    }
+
+                    document.getElementById("optiot").innerText = "Valitsit seuraavat optiot:" + valitutboksit.toString();
+
+                    // jos opiskelija-checkbox on valittu, tarkastetaan onko opiskelijanumero annettu
+                    if (document.getElementById("opiskelija").checked == true && document.getElementById("opiskelijanro").value != "") {
+
+                        // opiskelijanumero on annettu, tulostetaan opiskelijanumero p-elementtiin
+                        document.getElementById("o_nro").innerText = "Opiskelijanro: " + opiskelijanro.value;
+
+
+                    } else if (document.getElementById("opiskelija").checked == true && document.getElementById("opiskelijanro").value == "") {
+
+                        document.getElementById("optiot").innerText = ""
+
+                        // opiskelijanumeroa ei annettu, näytetään ilmoitus
+                        alert("Opiskelijanumero on pakollinen");
+                    }
+
+                } else {
+
+                    // jos checkboxeja ei ole valittu, tyhjennetään optiot p-elementti
+                    document.getElementById("optiot").innerText = ""
+                }
+            }
+        }
+
+        function opiskelijavalittu() {
+
+            let opiskelijavalittu = document.getElementById("opiskelija");
+            let opiskelijanroteksti = document.getElementById("opiskelijanro");
+
+            // jos opiskelija-checkbox oli valittu, näytetään opiskelijanumero-tekstikenttä ja sen label
+            if (opiskelijavalittu.checked == true) {
+                opiskelijanroteksti.style.visibility = '';;
+                opiskelijanrolabel.style.visibility = '';;
+
+            } else {
+                opiskelijanroteksti.style.visibility = "hidden";
+                opiskelijanrolabel.style.visibility = "hidden";
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <form>
+        <label for="nimi">Nimi:</label><br>
+        <input type="text" id="nimi" name="nimi"><br><br>
+        <label for="osoite">Osoite:</label><br>
+        <input type="text" id="osoite" name="osoite"><br><br>
+
+        <label for="ammatti">Ammatti:</label>
+        <select id="ammatti" name="ammatti">
+            <option value="tyhja"></option>
+            <option value="poliisi">Poliisi</option>
+            <option value="opettaja">Opettaja</option>
+            <option value="siivooja">Siivooja</option>
+        </select>
+        <br><br>
+
+        <input type="checkbox" id="erityisruokavalio" name="valitut" value="Erityisruokavalio">
+        <label for="erityisruokavalio">Erityisruokavalio</label><br>
+        <input type="checkbox" id="tarvitsee_majoituksen" name="valitut" value="Tarvitsee majoituksen">
+        <label for="tarvitsee_majoituksen">Tarvitsee majoituksen</label><br>
+        <input type="checkbox" id="opiskelija" name="valitut" value="Opiskelija" onclick="opiskelijavalittu();">
+        <label for="opiskelija">Opiskelija</label><br><br>
+
+        <label for="nimi" id="opiskelijanrolabel" style="visibility: hidden;">Opiskelijanro:</label><br>
+        <input type="text" id="opiskelijanro" name="opiskelijanro" style="visibility: hidden;"><br><br>
+        <br><br>
+
+    </form>
+
+    <button onclick="teht26a();" id="reg">Rekisteröidy 26</button><br><br>
+    <button onclick="teht27a();" id="reg_27">Rekisteröidy 27</button>
+
+    <div id="results">
+        <p id="data"></p>
+        <p id="tyo"></p>
+        <p id="optiot"></p>
+        <p id="o_nro"></p>
+    </div>
+
+    <h4 id="error"></h4>
+    <br><br>
+
+    <h4 id="error_ammatti"></h4>
+
+</body>
+
+</html>
