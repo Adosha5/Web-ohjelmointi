@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+
+    <!-- jQuery UI tarvitsee omaa tyylitiedostoa -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/sunny/jquery-ui.css">
+
+    <!-- Varsinaiset jQuery-kirjastot -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+    <title>Teht 38-44</title>
+
+    <script>
+
+        $(document).ready(function () {
+
+            // Tehtävä 38
+
+            // haetaan asiakkaan tiedot taulukkoon napinpainalluksella
+            $("#haeNappi").click(function () {
+
+                haeTiedot();
+
+            });
+
+
+            // Tehtävä 39
+
+            // täytetään asiakastyyppi-lista, kun sivu ladataan
+            $.ajax(
+                {
+                    url: "https://codez.savonia.fi/jussi/api/asiakas/tyypit.php",
+                    method: 'get',
+                    success: function (data, status, jqXHR) {  // funktio, jota kutsutaan, jos kutsu onnistuu
+                        console.log(JSON.stringify(data));
+                        console.log(status);
+                        console.log(jqXHR.statusText);
+
+                        // tyhjennetään lista
+                        $("#asty")
+                            .find('option').remove().end();
+
+                        // lisätään tyhjä valinta    
+                        $("#asty").append("<option value='0'></option>");
+
+                        // lisätään asiakastyypit listalle    
+                        $.each(data, function (index, json_obj) {
+                            $("#asty").append("<option value =" + json_obj.avain + ">" + json_obj.lyhenne + " " + json_obj.selite + "</option>");;
+                        });
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) { // funktio, jota kutsutaan, jos kutsu epäonnistui
+                        console.log("Error: textStatus = " + textStatus);
+                        console.log("Error: errorThrown = " + errorThrown)
+                    }
+                }
+            )
+
+            // Tehtävä 42
+
+            // dialogi uuden asiakkaan lisäystä varten
+            $("#lisaa_asiakas").on("click", function () {
+                $("#dialog").dialog("open");
+            });
+
+            $("#dialog").dialog({
+                autoOpen: false,
+                buttons: {
+                    "Tallenna": Tallenna,
+                    Peruuta: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            // dialogin asiakastyypit-valikko
+            $.ajax(
+                {
+                    url: "https://codez.savonia.fi/jussi/api/asiakas/tyypit.php",
+                    method: 'get',
+                    success: function (data, status, jqXHR) {  // funktio, jota kutsutaan, jos kutsu onnistuu
+                        console.log(JSON.stringify(data));
+                        console.log(status);
+                        console.log(jqXHR.statusText);
+
+                        // tyhjennetään lista
+                        $("#asty_lisays")
+                            .find('option').remove().end();
+
+                        // lisätään tyhjä valinta    
+                        $("#asty_lisays").append("<option value='0'></option>");
+
+                        // lisätään asiakastyypit listalle    
+                        $.each(data, function (index, json_obj) {
+                            $("#asty_lisays").append("<option value =" + json_obj.avain + ">" + json_obj.lyhenne + " " + json_obj.selite + "</option>");;
+                        });
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) { // funktio, jota kutsutaan, jos kutsu epäonnistui
+                        console.log("Error: textStatus = " + textStatus);
+                        console.log("Error: errorThrown = " + errorThrown)
+                    }
+                }
+            )
+
+        });
+
+        // apufunktio asiakkaan tietojen hakemiselle
+        function haeTiedot() {
+
+            let urlosoite = "https://codez.savonia.fi/jussi/api/asiakas/haku.php?";
+            let nimi = document.getElementById("nimi").value;
+            let osoite = document.getElementById("osoite").value;
+            let postinro = document.getElementById("postinro").value;
+            let postitmp = document.getElementById("postitmp").value;
+            let asty = document.getElementById("asty").value;
+
+            let a = [];
+            if (nimi != "") {
+                a.push("nimi=" + nimi);
+            }
+            if (osoite != "") {
+                a.push("osoite=" + osoite);
+            }
+            if (postinro != "") {
+                a.push("postinro=" + postinro);
+            }
+            if (postitmp != "") {
+                a.push("postitmp=" + postitmp);
+            }
+            if (asty != "0") {
+                a.push("asty_avain=" + asty);
+            }
+
+            let kayttajanSyote = a.join("&")
+
+            urlosoite = urlosoite + kayttajanSyote;
+
+            $.ajax(
+                {
+                    url: urlosoite,
+                    method: 'get',
+                    success: function (data, status, jqXHR) {  // funktio, jota kutsutaan, jos kutsu onnistuu
+                        console.log(JSON.stringify(data));
+                        console.log(status);
+                        console.log(jqXHR.statusText);
+
+                        // lisätään asiakkaan tiedot taulukkoon
+                        lisaaTiedot(data, status, jqXHR);
+
+                        console.log("Kutsu tehty, asiakastiedot");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) { // funktio, jota kutsutaan, jos kutsu epäonnistui
+                        console.log("Error: textStatus = " + textStatus);
+                        console.log("Error: errorThrown = " + errorThrown);
+                    }
+                }
+            )
+        }
+
+
+        // apufunktio taulukon täyttämiselle
+        function lisaaTiedot(data, status, jqXHR) {
+
+            //tyhjennetään taulukko
+            $('#asiakastiedot').find("tr:gt(0)").remove();
+
+            // lisätään asiakkaan tiedot taulukkoon
+            $.each(data, function (index, json_obj) {
+
+                let table = document.querySelector("#asiakastiedot");
+                let tbody = document.createElement("tbody");
+                let tr = document.createElement("tr");
+                let td = document.createElement("td");
+
+                td.innerText = json_obj.nimi;
+                tr.appendChild(td);
+                td = document.createElement("td");
+                td.innerText = json_obj.osoite;
+                tr.appendChild(td);
+                td = document.createElement("td");
+                td.innerText = json_obj.postinro;
+                tr.appendChild(td);
+                td = document.createElement("td");
+                td.innerText = json_obj.postitmp;
+                tr.appendChild(td);
+                td = document.createElement("td");
+                td.innerText = json_obj.luontipvm;
+                tr.appendChild(td);
+                td = document.createElement("td");
+                td.innerText = json_obj.asty_avain;
+                tr.appendChild(td);
+
+                // tehtävä 40, lisätään poista-napit
+                td = document.createElement("td");
+                td.innerHTML = "<button id=poista_" + json_obj.avain + " onclick=Poista(" + json_obj.avain + ") >Poista</button>";
+                tr.appendChild(td);
+
+                // tehtävä 45, lisätään muuta-napit
+                td = document.createElement("td");
+                td.innerHTML = '<button id="muuta">Muuta</button>';
+                tr.appendChild(td);
+
+                tbody.appendChild(tr);
+                table.appendChild(tbody);
+            });
+        }
+
+        // Tehtävä 40 ja tehtävä 41
+
+        // poistetaan asiakas käyttäjän valitsemalta riviltä ja päivitetään taulukko
+        function Poista(avain) {
+
+            let urlPoistaAsiakas = "https://codez.savonia.fi/jussi/api/asiakas/poista.php?avain=" + avain;
+
+            $.ajax(
+                {
+                    url: urlPoistaAsiakas,
+                    method: 'get',
+                    success: function (data, status, jqXHR) {  // funktio, jota kutsutaan, jos kutsu onnistuu
+                        console.log(JSON.stringify(data));
+                        console.log(status);
+                        console.log(jqXHR.statusText);
+
+                        console.log("Poistettu asiakas, avain: " + avain)
+
+                        // Päivitetään taulukko
+                        haeTiedot(data, status, jqXHR);
+
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) { // funktio, jota kutsutaan, jos kutsu epäonnistui
+                        console.log("Error: textStatus = " + textStatus);
+                        console.log("Error: errorThrown = " + errorThrown)
+                    }
+                }
+            )
+        }
+
+        // Tehtävä 42
+
+        // apufunktio dialogin tietojen tallentamiselle
+        function Tallenna() {
+
+            let uusinimi = document.getElementById("nimi_lisays").value;
+            let uusiosoite = document.getElementById("osoite_lisays").value;
+            let uusipostinro = document.getElementById("postinro_lisays").value;
+            let uusipostitmp = document.getElementById("postitmp_lisays").value;
+            let uusiastyavain = document.getElementById("asty_avain_lisays").value;
+            let uusiasty = document.getElementById("asty_lisays").value;
+
+            if (uusiastyavain != "") {
+                uusiasty = uusiastyavain;
+            }
+
+            $.ajax(
+                {
+                    url: "https://codez.savonia.fi/jussi/api/asiakas/lisaa.php",
+                    method: 'post',
+                    data: { nimi: uusinimi, osoite: uusiosoite, postinro: uusipostinro, postitmp: uusipostitmp, asty_avain: uusiasty },
+                    success: function (data, status, jqXHR) {
+                        console.log(JSON.stringify(data));
+                        console.log(status);
+                        console.log(jqXHR.statusText);
+
+                        // suljetaan dialogi 
+                        $("#dialog").dialog("close");
+
+                        // lisätään asiakkaan tiedot taulukkoon
+                        haeTiedot(data, status, jqXHR);
+
+                        console.log("Kutsu tehty, uusi asiakas lisätty");
+
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log("Error: textStatus = " + textStatus);
+                        console.log("Error: errorThrown = " + errorThrown)
+                    }
+                }
+            )
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+
+    <h4>Tehtävät 38-41</h4>
+
+    <form>
+        <label for="nimi">Nimi:</label><br>
+        <input type="text" id="nimi"><br><br>
+        <label for="osoite">Osoite:</label><br>
+        <input type="text" id="osoite"><br><br>
+        <label for="postinro">Postinumero:</label><br>
+        <input type="text" id="postinro"><br><br>
+        <label for="postitmp">Postitoimipaikka:</label><br>
+        <input type="text" id="postitmp"><br><br>
+        <label for="asty">Asiakastyyppi:</label><br>
+        <select id="asty">
+            <option value="0"></option>
+        </select>
+    </form>
+    <br><br>
+
+    <button id="haeNappi">Hae</button><br><br>
+
+    <table id="asiakastiedot">
+        <thead>
+            <tr style="font-weight: bold;">
+                <td>Nimi</td>
+                <td>Osoite</td>
+                <td>Postinumero</td>
+                <td>Postitoimipaikka</td>
+                <td>Luontipäivä</td>
+                <td>Asty-avain</td>
+                <td>Poista</td>
+                <td>Muuta</td>
+            </tr>
+        </thead>
+    </table>
+    <br><br>
+
+    <h4>Tehtävät 42-44</h4>
+
+    <button id="lisaa_asiakas">Lisää asiakas</button><br><br>
+
+    <div id="dialog" title="Lisää asiakas">
+        <form id="lisaa_form">
+            <label for="nimi_lisays">Nimi:</label><br>
+            <input type="text" id="nimi_lisays">
+            <label for="osoite_lisays">Osoite:</label><br>
+            <input type="text" id="osoite_lisays">
+            <label for="postinro_lisays">Postinumero:</label><br>
+            <input type="text" id="postinro_lisays">
+            <label for="postitmp_lisays">Postitoimipaikka:</label><br>
+            <input type="text" id="postitmp_lisays">
+            <label for="asty_avain_lisays">Asiakastyyppi:</label><br>
+            <input type="text" id="asty_avain_lisays">
+            <label for="asty_lisays">Asiakastyyppi:</label><br>
+            <select id="asty_lisays">
+                <option value="0"></option>
+            </select>
+        </form>
+    </div>
+    
+</body>
+
+</html>
