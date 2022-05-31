@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Teht 13</title>
+
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            background-color: lightgray;
+            margin: 10px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 5px;
+            padding-right: 5px;
+            flex-grow: 1;
+            flex-shrink: 0;
+        }
+
+        .etsi {
+            margin-left: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="flex-container">
+
+        <div>
+            <form>
+                <label for="linkki"><a href="https://www.savonia.fi/" style="text-decoration-line: none;">Savonia
+                        (linkki)</a></label>
+
+                <select id="valitse" name="choose" value="Valitse">
+                    <option value="valitse">Valitse</option>
+                    <option value="ohjeet">Ohjeet</option>
+                    <option value="Yhteystiedot">Yhteystiedot</option>
+                </select>
+            </form>
+        </div>
+
+        <div class="etsi">
+            <form>
+                <input type="text" id="haku" name="search" placeholder="Search" >
+                <input type="submit" value="Search">
+            </form>
+        </div>
+
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Teht 16</title>
+
+    <style>
+        body {
+            font-family: Calibri;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #grid {
+            display: grid;
+            grid-template-areas:
+                "nimi1 nimi2"
+                "vuosikurssi1 vuosikurssi2"
+                "laitos1 laitos2"
+                "kurssinnimi1 kurssinnimi2"
+                "kurssintyyppi1 kurssintyyppi2"
+                "sukupuoli1 sukupuoli2"
+                "harrastukset1 harrastukset2"
+                "tyhjenna laheta";
+            grid-gap: 2px;
+            height: 350px;
+            width: 350px;
+            margin: auto;
+            border: solid 2px black;
+            padding: 5px;
+            text-align: right;
+        }
+
+        div{
+            border-bottom: solid 2px black;
+            padding: 2px;
+        }
+
+        #nimi1 {
+            grid-area: nimi1;
+            font-weight: bold;           
+        }
+
+        #vuosikurssi1 {
+            grid-area: vuosikurssi1;
+            font-weight: bold;            
+        }
+
+        #laitos1 {
+            grid-area: laitos1;
+            font-weight: bold;           
+        }
+
+        #kurssinnimi1 {
+            grid-area: kurssinnimi1;
+            font-weight: bold;
+        }
+
+        #kurssintyyppi1 {
+            grid-area: kurssintyyppi1;
+            font-weight: bold;
+        }
+
+        #sukupuoli1 {
+            grid-area: sukupuoli1;
+            font-weight: bold;
+        }
+
+        #harrastukset1 {
+            grid-area: harrastukset1;
+            font-weight: bold;
+        }
+
+        #nimi2 {
+            grid-area: nimi2;
+        }
+
+        #vuosikurssi2 {
+            grid-area: vuosikurssi2;
+        }
+
+        #laitos2 {
+            grid-area: laitos2;
+        }
+
+        #kurssinnimi2 {
+            grid-area: kurssinnimi2;
+        }
+
+        #kurssintyyppi2 {
+            grid-area: kurssintyyppi2;
+        }
+
+        #sukupuoli2 {
+            grid-area: sukupuoli2;
+        }
+
+        #harrastukset2 {
+            grid-area: harrastukset2;
+        }
+
+        #tyhjenna {
+            grid-area: tyhjenna;
+            border-bottom: none
+        }
+
+        #laheta {
+            grid-area: laheta;
+            border-bottom: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Syötä ilmoittautumistiedot</h1>
+
+    <div id="grid">
+
+        <div id="nimi1"><label for="nimi">Nimi:</label></div>
+        <div id="nimi2"><input type="text" id="nimi" name="nimi"></div>
+
+        <div id="vuosikurssi1"><label for="vuosikurssi">Vuosikurssi:</label></div>
+        <div id="vuosikurssi2"><input type="password" id="vuosikurssi" name="vuosikurssi"></div>
+
+        <div id="laitos1"><label for="laitos">Oppilaitos:</label></div>
+        <div id="laitos2"><input type="text" id="laitos" name="laitos" value="Savonia AMK" readonly></div>
+
+        <div id="kurssinnimi1"><label for="kurssinnimi">Kurssin nimi:</label></div>
+        <div id="kurssinnimi2"><select id="kurssinnimi" name="kurssinnimi">
+
+                <option value="matematiikka">Matematiikka</option>
+                <option value="fysiikka">Fysiikka</option>
+                <option value="kemia">Kemia</option>
+
+                <option value="tietorakenteet">Tietorakenteet</option>
+                <option value="webohjelmointi">Webohjelmointi</option>
+            </select></div>
+
+        <div id="kurssintyyppi1"><label for="kurssintyyppi">Kurssin toteutus:</label></div>
+        <div id="kurssintyyppi2"><select id="kurssintyyppi" name="tyyppi">
+                <option value="etaopetus">etäopetus</option>
+                <option value="lahiopetus">lähiopetus</option>
+            </select></div>
+
+        <div id="sukupuoli1"><label for="sukupuoli">Sukupuoli:</label></div>
+        <div id="sukupuoli2"><label for="mies">mies</label><input type="radio" id="mies" name="sukupuoli"
+                value="Mies"><br>
+            <label for="nainen">nainen</label><input type="radio" id="nainen" name="sukupuoli" value="nainen"><br>
+            <label for="javascript">en kommentoi</label><input type="radio" id="muu" name="sukupuoli"
+                value="enkommentoi">
+        </div>
+
+        <div id="harrastukset1"><label for="harrastukset">Harrastukset:</label></div>
+        <div id="harrastukset2"><label for="atkpelit">ATK-pelit</label><input type="checkbox" id="atkpelit"
+                name="hobbies[]" value="atkpelit"><br>
+            <label for="tietokonepelit">Tietokonepelit</label><input type="checkbox" id="tietokonepelit"
+                name="hobbies[]" value="tietokonepelit"><br>
+            <label for="pcpelit">PC-pelit</label><input type="checkbox" id="pcpelit" name="hobbies[]" value="pcpelit"
+                checked="checked"><br>
+            <label for="videopelit">Videopelit</label><input type="checkbox" id="videopelit" name="hobbies[]"
+                value="videopelit">
+        </div>
+
+        <div id="tyhjenna"><button type="button">Tyhjennä</button></div>
+        <div id="laheta"><button type="button">Lähetä</button></div>
+
+    </div>
+
+</body>
+
+</html>

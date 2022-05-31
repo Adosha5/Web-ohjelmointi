@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Teht 13</title>
+
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        
+        .flex-container > div {
+                background-color: gold;
+                margin: 5px;
+                padding: 10px;                
+                flex-grow: 1;
+                flex-shrink: 0;
+            }
+
+        #eka {
+            display: subgrid;
+            border: 1px solid;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        #toka {
+            display: subgrid;
+            border: 1px solid;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        #pageHeader {
+            align-self: flex-start;
+            width: 95%;
+            height: 40px;
+            text-align: center;
+        }   
+
+        #mainNav {
+            width: 120px;
+        }  
+
+        #mainArticle {
+            width: 500px;
+        }  
+
+        #siteAds {
+            width: 100px;
+        }  
+
+        #pageFooter {
+            align-self: flex-end;
+            width: 95%;
+            height: 80px;
+            padding: 10px;  
+            text-align: center;
+        }        
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="flex-container">
+
+    <div id="pageHeader">Welcome to Savonia</div>
+
+    <div id="mainNav">
+        <ul style="list-style-type: none;">
+            <li><a href="url">Studing</a></li>
+            <li><a href="url">Classes</a></li>
+            <li><a href="url">IT</a></li>
+            <li><a href="url">Government</a></li>
+            <li><a href="url">Spare time</a></li>
+            <li><a href="url">Others</a></li>
+        </ul>
+    </div>
+
+    <div id="mainArticle">
+        <table>
+            <tr>
+                <td>
+                    <div id="eka">
+                        Grid includes an intuitive "ASCII art" syntax where you can virtually "see" the layout within
+                        your code, so this makes it extremely easy to create and modify to your layout. Even major
+                        changes can be done within a few seconds. This intuitive syntax also helps with responsive web
+                        design.
+                        Creating different layouts for different devices becomes quite trivial when using grid.
+                    </div>
+                </td>
+                <td>
+                    <div id="toka">
+                        Grid items can become grids themselves with CSS grid layout. You can then place grid items
+                        inside the grid, therefore creating a nested grid. To create a nested grid, all you have to do
+                        is apply
+                        display: grid (or display: inline-grid) to the grid item and it becomes a grid. You can also
+                        apply
+                        display: subgrid to create a subgrid. See below for more information on subgrids.
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="siteAds">
+        <div style="border: solid 1px black; margin: 10px; padding: 20px;"> Mainosasiaa ....</div>
+        <div style="border: solid 1px black; margin: 10px; padding: 20px;"> Mainosasiaa ....</div>
+    </div>
+
+    <div id="pageFooter">Contact information</div>
+
+</div>
+
+</body>
+
+</html>

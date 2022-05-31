@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Teht 12</title>
+
+    <style>
+        body {
+            display: grid;
+            grid-template-areas:
+                "header header header"
+                "nav article ads"
+                "footer footer footer";
+            grid-template-rows: 60px 1fr 100px;
+            grid-template-columns: 20% 1fr 15%;
+            grid-gap: 10px;
+            height: 500px;
+            margin-top: 50px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        header,
+        footer,
+        article,
+        nav,
+        div {
+            padding: 20px;
+            background: gold;
+        }
+
+        #pageHeader {
+            grid-area: header;
+            text-align: center;
+        }
+
+        #mainArticle {
+            grid-area: article;
+        }
+
+        #eka {
+            display: subgrid;
+            border: 1px solid;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        #toka {
+            display: subgrid;
+            border: 1px solid;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        #mainNav {
+            grid-area: nav;
+        }
+
+        #siteAds {
+            grid-area: ads;
+        }
+        
+        #pageFooter {
+            grid-area: footer;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header id="pageHeader">Welcome to Savonia</header>
+    <article id="mainArticle">
+
+        <table>
+            <tr>
+                <td>
+                    <div id="eka">
+                        Grid includes an intuitive "ASCII art" syntax where you can virtually "see" the layout within
+                        your code, so this makes it extremely easy to create and modify to your layout. Even major
+                        changes can be done within a few seconds. This intuitive syntax also helps with responsive web design.
+                        Creating different layouts for different devices becomes quite trivial when using grid.
+                    </div>
+                </td>
+                <td>
+                    <div id="toka">
+                        Grid items can become grids themselves with CSS grid layout. You can then place grid items
+                        inside the grid, therefore creating a nested grid. To create a nested grid, all you have to do is apply
+                        display: grid (or display: inline-grid) to the grid item and it becomes a grid. You can also apply
+                        display: subgrid to create a subgrid. See below for more information on subgrids.
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </article>
+
+    <nav id="mainNav">
+        <ul style="list-style-type: none;">
+            <li><a href="url">Studing</a></li>
+            <li><a href="url">Classes</a></li>
+            <li><a href="url">IT</a></li>
+            <li><a href="url">Government</a></li>
+            <li><a href="url">Spare time</a></li>
+            <li><a href="url">Others</a></li>
+        </ul>
+    </nav>
+
+    <div id="siteAds">
+        <div style="border: solid 1px black; margin: 10px; padding: 20px;"> Mainosasiaa ....</div>
+        <div style="border: solid 1px black; margin: 10px; padding: 20px;"> Mainosasiaa ....</div>
+    </div>
+
+    <footer id="pageFooter">Contact information</footer>
+
+</body>
+
+</html>

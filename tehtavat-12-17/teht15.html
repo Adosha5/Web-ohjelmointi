@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Teht 15</title>
+
+    <style>
+        body {
+            font-family: Calibri;
+        }
+
+
+        #grid {
+            display: grid;
+            grid-template-areas:
+                "henkilosto henkilosto koulutus koulutus koulutus"
+                "henkilosto henkilosto muu amk korkeakoulu"
+                "ika kolme google uef savonsanomat"
+                "ika kolmeviisi lista1 lista2 lista3"
+                "ika viisi javascript rokkaa selaimessa";
+            grid-gap: 2px;
+            height: 300px;
+            margin-top: 50px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        div {
+            border: solid 1px black;
+            padding: 2px;
+        }
+
+        .omamuotoilu {
+            font-size: 30px;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        #henkilosto {
+            grid-area: henkilosto;
+            font-weight: bold;
+            text-align: center;            
+        }
+
+        #koulutus {
+            grid-area: koulutus;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #muu {
+            grid-area: muu;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #amk {
+            grid-area: amk;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #korkeakoulu {
+            grid-area: korkeakoulu;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #ika {
+            grid-area: ika;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #kolme {
+            grid-area: kolme;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #kolmeviisi {
+            grid-area: kolmeviisi;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #viisi {
+            grid-area: viisi;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #google {
+            grid-area: google;
+        }
+
+        #uef {
+            grid-area: uef;
+        }
+
+        #savonsanomat {
+            grid-area: savonsanomat;
+        }
+
+        #lista1 {
+            grid-area: lista1;
+        }
+
+        #lista2 {
+            grid-area: lista2;
+        }
+
+        #lista3 {
+            grid-area: lista3;
+        }
+
+        #javascript {
+            grid-area: javascript;
+        }
+
+        #rokkaa {
+            grid-area: rokkaa;
+        }
+
+        #selaimessa {
+            grid-area: selaimessa;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="grid">
+
+        <div id="henkilosto">Henkilöstö</div>
+        <div id="koulutus">Koulutus</div>
+        <div id="muu">Muu</div>
+        <div id="amk">Ammattikorkeakoulu</div>
+        <div id="korkeakoulu">Korkeakoulu</div>
+
+        <div id="ika">Ikä</div>
+        <div id="kolme">- 30</div>
+        <div id="kolmeviisi">30 - 50</div>
+        <div id="viisi">50 -</div>
+
+        <div id="google"><a href="https://www.google.com/">Google</a></div>
+        <div id="uef"><a href="https://www.uef.fi/">UEF</a></div>
+        <div id="savonsanomat"><a href="https://www.savonsanomat.fi/">Savon sanomat</a></div>
+
+        <div id="lista1">
+            <ol>
+                <li>Yksi</li>
+                <li>Kaksi</li>
+                <li>Kolme</li>
+            </ol>
+        </div>
+        <div id="lista2">
+            <ol>
+                <li>Omena</li>
+                <li>Banaani</li>
+                <li>Persikka</li>
+            </ol>
+        </div>    
+        <div id="lista3">
+            <ol>
+                <li>Audi</li>
+                <li>BMW</li>
+                <li>Toyota</li>
+            </ol>
+        </div>
+
+        <div id="javascript" class="omamuotoilu">Javascript</div>
+        <div id="rokkaa" class="omamuotoilu">rokkaa</div>
+        <div id="selaimessa" class="omamuotoilu">selaimessa</div>
+
+
+    </div>
+
+</body>
+
+</html>
