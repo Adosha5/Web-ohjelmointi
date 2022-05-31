@@ -1,0 +1,147 @@
+{
+  "tuotetyyppi": [
+    {
+      "id": 1,
+      "nimi": "maitotuotteet",
+      "koodi": "001ma"
+    },
+    {
+      "id": 2,
+      "nimi": "juustot",
+      "koodi": "002ju"
+    },
+    {
+      "id": 3,
+      "nimi": "hedelmät",
+      "koodi": "003he"
+    },
+    {
+      "id": 4,
+      "nimi": "leivät",
+      "koodi": "004le"
+    },
+    {
+      "id": 5,
+      "nimi": "liha",
+      "koodi": "005li"
+    },
+    {
+      "id": 6,
+      "nimi": "säilykkeet",
+      "koodi": "006sa"
+    },
+    {
+      "id": 7,
+      "nimi": "valmisruoka",
+      "koodi": "007va"
+    },
+    {
+      "id": 8,
+      "nimi": "kissanruoat",
+      "koodi": "008ki"
+    },
+    {
+      "id": 9,
+      "nimi": "mausteet",
+      "koodi": "009ma"
+    },
+    {
+      "id": 10,
+      "nimi": "pakasteet",
+      "koodi": "010pa"
+    }
+  ],
+  "tuote": [
+    {
+      "id": 4,
+      "nimi": "Naudan jauheliha 400g",
+      "selite": "Rasvapitoisuus 10%",
+      "tyyppi_id": 5,
+      "ostopvm": "4.10.2020",
+      "valmistaja": "Atria",
+      "hinta": "3,59 €"
+    },
+    {
+      "id": 13,
+      "nimi": "Rypälerasia",
+      "selite": "Puoli kiloa tummia rypäleitä",
+      "tyyppi_id": 3,
+      "ostopvm": "4.9.2020",
+      "valmistaja": "Rainbow",
+      "hinta": "2,39 €"
+    },
+    {
+      "id": 14,
+      "nimi": "Tomaattimurska",
+      "selite": "Italian suosituin",
+      "tyyppi_id": 6,
+      "ostopvm": "4.10.2020",
+      "valmistaja": "Mutti",
+      "hinta": "0,89 €"
+    },
+    {
+      "id": 15,
+      "nimi": "Tomaatti-linssikeitto",
+      "selite": "Puolet päivän kasviksista!",
+      "tyyppi_id": 7,
+      "ostopvm": "14.9.2020",
+      "valmistaja": "Kokkikartano",
+      "hinta": "2,35 €"
+    },
+    {
+      "id": 16,
+      "nimi": "Garam masala 28g",
+      "selite": "Maustesekoitus",
+      "tyyppi_id": 9,
+      "ostopvm": "9.10.2020",
+      "valmistaja": "Meira",
+      "hinta": "0,99 €"
+    },
+    {
+      "id": 17,
+      "nimi": "Sensations Crunchy",
+      "selite": "Sitä kissa ostaisi",
+      "tyyppi_id": 8,
+      "ostopvm": "18.9.2020",
+      "valmistaja": "Latz",
+      "hinta": "3,92 €"
+    },
+    {
+      "id": 18,
+      "nimi": "Polar 15% 700g",
+      "selite": "Emmentaltyyppinen juusto",
+      "tyyppi_id": 2,
+      "ostopvm": "19.9.2020",
+      "valmistaja": "Valio",
+      "hinta": "6,59 €"
+    },
+    {
+      "id": 19,
+      "nimi": "Mustapippuri 27g",
+      "selite": "Mustapippuri kokonainen",
+      "tyyppi_id": 9,
+      "ostopvm": "12.10.2020",
+      "valmistaja": "Meira",
+      "hinta": "0,89 €"
+    },
+    {
+      "id": 20,
+      "nimi": "Dreamies Mix",
+      "selite": "Kissan makupalat 60g",
+      "tyyppi_id": 8,
+      "ostopvm": "14.9.2020",
+      "valmistaja": "Dreamies",
+      "hinta": "1,55 €"
+    },
+	    {
+      "id": 21,
+      "nimi": "Banaani",
+      "selite": "Banaan luomu",
+      "tyyppi_id": 3,
+      "ostopvm": "14.9.2020",
+      "valmistaja": "Chiquita",
+      "hinta": "1,55 €"
+    }
+
+  ]
+}

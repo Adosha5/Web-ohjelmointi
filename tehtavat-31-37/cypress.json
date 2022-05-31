@@ -1,0 +1,6 @@
+{
+    "integrationFolder" : ".",
+    "screenshotOnRunFailure" : false,
+    "video" : false,
+    "reporter": "CypressReporter.js"
+}
